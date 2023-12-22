@@ -159,7 +159,6 @@ function App() {
   return (
     <div>
       <h2>Phonebook</h2>
-      <p>kokeilu!</p>
       <Notification message={confirmationMessage} isSuccess={true} />
       <Notification message={errorMessage} isSuccess={false} />
       <Search handleSearchChange={handleSearchChange}/>
