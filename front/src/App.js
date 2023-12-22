@@ -175,6 +175,7 @@ function App() {
         deletePerson={deletePerson}
         filteredPersons={filteredPersons}
       />
+      <p>Tänne alle lisäsin kokeiluksi tekstiä!</p>
     </div>
   );
 }

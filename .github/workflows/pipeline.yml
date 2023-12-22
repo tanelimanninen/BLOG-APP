@@ -32,3 +32,18 @@ jobs:
           with:
             service_id: ${{ secrets.RENDER_SERVICE_ID }} # required
             api_key: ${{ secrets.RENDER_API_KEY }}
+    
+    tag_release:
+        if: |
+          github.event_name == 'push' &&
+          contains(join(github.event.commits.*.message, ' '), '#skip') == false
+        needs: [simple_deployment_pipeline]
+        runs-on: ubuntu-20.04
+        steps:
+          - name: Checkout Repository
+            uses: actions/checkout@v3
+          - name: Bump version and push tag
+            uses: anothrNick/github-tag-action@8c8163ef62cf9c4677c8e800f36270af27930f42
+            env:
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                DEFAULT_BUMP: patch
